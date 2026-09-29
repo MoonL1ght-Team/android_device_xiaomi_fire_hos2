@@ -319,6 +319,9 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-subhal-impl-1.0 \
     sensors.dynamic_sensor_hal
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
+
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal-service.fire \

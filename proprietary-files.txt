@@ -1114,7 +1114,7 @@ vendor/lib64/libhidparser.so|bbbdb11b8359eeebb391b4d3ce0508bc2d07a098
 vendor/lib64/sensors.touch.detect.so|8ecefd81e73bb7fc266bfb068b32b0f3f0119bcd
 
 # Sensors configs
-vendor/etc/sensors/hals.conf|5b9f70bce7de1735609755ebb4cd1292ec21dc48
+#vendor/etc/sensors/hals.conf|5b9f70bce7de1735609755ebb4cd1292ec21dc48
 
 # Soter
 # vendor/app/SoterService/SoterService.apk
@@ -2064,8 +2064,8 @@ vendor/lib64/android.hardware.power-service-mediatek.so|37bdf43a1a7abb37fe81a780
 vendor/etc/init.insmod.mt6768.cfg|68ec05d8a374b17130909562a042ce6d8a438277
 
 # Sensors HAL expects its sub-HAL configuration from ODM.
-vendor/lib/sensors.camera.light.so|8de6a81c7939475feccb8da76f8c1049aa7911de
-vendor/lib64/sensors.camera.light.so|479a483bb165097a0cbfff547837906c5e429206
+#vendor/lib/sensors.camera.light.so|8de6a81c7939475feccb8da76f8c1049aa7911de
+#vendor/lib64/sensors.camera.light.so|479a483bb165097a0cbfff547837906c5e429206
 vendor/lib64/hw/sensors.mt6768.so|8a4a80b69455d2f50af653bfeda7f5d132768cc5
 vendor/etc/audio_param_cust/audio_param_ato/BtInfo_AudioParam.xml|c2027f10be01a42e038211e76d4ccf23269217c7
 vendor/etc/audio_param_cust/audio_param_ato/BtInfo_ParamUnitDesc.xml|26fedb23f2d3e835896d37cad584e111d80f3b1f
