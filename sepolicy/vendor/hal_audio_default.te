@@ -1,2 +1,7 @@
+# Smart PA sysfs access
+allow hal_audio_default sysfs_smartpa:dir r_dir_perms;
+allow hal_audio_default sysfs_smartpa:file rw_file_perms;
+
+# Persist & Props
 allow hal_audio_default persist_data_file:dir search;
 set_prop(hal_audio_default, vendor_mtk_audio_prop)

@@ -1,3 +1,6 @@
+# Audio
+genfscon sysfs /devices/platform/1100f000.i2c/i2c-3/3-0058 u:object_r:sysfs_smartpa:s0
+
 # DT2W
 genfscon proc  /tp_gesture u:object_r:proc_tp_gesture:s0
 
