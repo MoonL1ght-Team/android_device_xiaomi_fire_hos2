@@ -87,6 +87,9 @@ TARGET_OTA_ASSERT_DEVICE := fire
 # Display
 TARGET_SCREEN_DENSITY := 440
 
+# Init
+$(call soong_config_set,libinit,vendor_init_lib,libinit_fire)
+
 # Kernel
 TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
