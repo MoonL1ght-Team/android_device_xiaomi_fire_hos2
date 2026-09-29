@@ -939,6 +939,10 @@ on property:persist.vendor.mediatek.fast_charging.support=*
 on boot
     insmod /vendor/lib/modules/fpsgo.ko
 
+# Let FPSGO control HWUI RenderThread workloads after its kernel module is up.
+on property:sys.boot_completed=1
+    write /sys/kernel/fpsgo/composer/control_hwui 1
+
 # VSIM service (vendor OSI)
 service osi /system/bin/osi
     class main

@@ -136,8 +136,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek/libaedv \
     hardware/mediatek/wlan/wifi_hal
 
-# MediaTek GED KPI integration in libgui
-$(call soong_config_set_bool,libgui,support_mtk_ged_kpi,true)
+# Feed BufferQueue and HWUI frame events to the MediaTek FPSGO driver.
+$(call soong_config_set_bool,libgui,support_mtk_fpsgo,true)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400

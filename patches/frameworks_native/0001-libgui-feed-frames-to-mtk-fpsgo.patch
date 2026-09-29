@@ -1,0 +1,182 @@
+diff --git a/libs/gui/Android.bp b/libs/gui/Android.bp
+index 7df42d8..b31cee0 100644
+--- a/libs/gui/Android.bp
++++ b/libs/gui/Android.bp
+@@ -410,9 +410,12 @@ cc_defaults {
+     cflags: [
+         "-DANDROID_UTILS_REF_BASE_DISABLE_IMPLICIT_CONSTRUCTION",
+         "-Wthread-safety",
+-    ] +  select(soong_config_variable("libgui", "support_mtk_ged_kpi"), {
++    ] + select(soong_config_variable("libgui", "support_mtk_ged_kpi"), {
+         true: ["-DENABLE_MTK_GED_KPI"],
+         default: [],
++    }) + select(soong_config_variable("libgui", "support_mtk_fpsgo"), {
++        true: ["-DENABLE_MTK_FPSGO"],
++        default: [],
+     }),
+ }
+
+diff --git a/libs/gui/Surface.cpp b/libs/gui/Surface.cpp
+index c060aa4..b441aff 100644
+--- a/libs/gui/Surface.cpp
++++ b/libs/gui/Surface.cpp
+@@ -26,6 +26,13 @@
+ #include <deque>
+ #include <mutex>
+ #include <thread>
++#ifdef ENABLE_MTK_FPSGO
++#include <cstring>
++#include <fcntl.h>
++#include <sys/ioctl.h>
++#include <sys/prctl.h>
++#include <unistd.h>
++#endif
+ #ifdef ENABLE_MTK_GED_KPI
+ #include <sys/ioctl.h>
+ #include <fcntl.h>
+@@ -71,6 +78,65 @@
+
+ namespace android {
+
++#ifdef ENABLE_MTK_FPSGO
++// MediaTek perf_ioctl ABI used by mtk_perf_ioctl.ko.
++namespace {
++struct FpsgoPackage {
++    int32_t tid;
++    int32_t value1;
++    uint64_t sfBufferId;
++    int32_t value2;
++    int32_t value3;
++    int32_t queueSf;
++    int32_t api;
++    uint64_t identifier;
++};
++static_assert(sizeof(FpsgoPackage) == 40);
++
++#define FPSGO_IOW(n) _IOW('g', n, FpsgoPackage)
++constexpr unsigned long FPSGO_QUEUE = FPSGO_IOW(1);
++constexpr unsigned long FPSGO_DEQUEUE = FPSGO_IOW(3);
++constexpr unsigned long FPSGO_SWAP_BUFFER = FPSGO_IOW(14);
++constexpr unsigned long FPSGO_CONNECT = FPSGO_IOW(15);
++constexpr unsigned long FPSGO_BQID = FPSGO_IOW(16);
++
++std::mutex gFpsgoIoctlMutex;
++int gFpsgoFd = -1;
++
++bool fpsgoIsHwuiThread() {
++    thread_local const bool isHwui = [] {
++        char name[16]{};
++        return prctl(PR_GET_NAME, name) == 0 && std::strcmp(name, "RenderThread") == 0;
++    }();
++    return isHwui;
++}
++
++void fpsgoNotify(unsigned long request, int32_t value1, uint64_t sfBufferId,
++                 int32_t queueSf, int32_t api, uint64_t identifier) {
++    std::lock_guard lock(gFpsgoIoctlMutex);
++    if (gFpsgoFd == -2) return;
++    if (gFpsgoFd < 0) {
++        gFpsgoFd = open("/proc/perfmgr/perf_ioctl", O_RDONLY | O_CLOEXEC);
++        if (gFpsgoFd < 0) {
++            ALOGW("FPSGO: cannot open perf_ioctl: %s", strerror(errno));
++            gFpsgoFd = -2;
++            return;
++        }
++    }
++    FpsgoPackage package{};
++    package.tid = gettid();
++    package.value1 = value1;
++    package.sfBufferId = sfBufferId;
++    package.queueSf = queueSf;
++    package.api = api;
++    package.identifier = identifier;
++    if (ioctl(gFpsgoFd, request, &package) < 0) {
++        ALOGW("FPSGO: ioctl %#lx failed: %s", request, strerror(errno));
++    }
++}
++} // namespace
++#endif
++
+ using namespace com::android::graphics::libgui;
+ using ui::Dataspace;
+
+@@ -777,12 +843,21 @@ int Surface::dequeueBuffer(sp<GraphicBuffer>* buffer, int* fenceFd) {
+     nsecs_t startTime = systemTime();
+
+     FrameEventHistoryDelta frameTimestamps;
++#ifdef ENABLE_MTK_FPSGO
++    const uint64_t fpsgoIdentifier = reinterpret_cast<uintptr_t>(this);
++    uint64_t fpsgoBufferId = 0;
++    mGraphicBufferProducer->getUniqueId(&fpsgoBufferId);
++    fpsgoNotify(FPSGO_DEQUEUE, 1, fpsgoBufferId, 0, 0, fpsgoIdentifier);
++#endif
+     status_t result = mGraphicBufferProducer->dequeueBuffer(&buf, &fence, dqInput.width,
+                                                             dqInput.height, dqInput.format,
+                                                             dqInput.usage, &mBufferAge,
+                                                             dqInput.getTimestamps ?
+                                                                     &frameTimestamps : nullptr);
+     mLastDequeueDuration = systemTime() - startTime;
++#ifdef ENABLE_MTK_FPSGO
++    fpsgoNotify(FPSGO_DEQUEUE, 0, fpsgoBufferId, 0, 0, fpsgoIdentifier);
++#endif
+
+     if (result < 0) {
+         SURF_LOGV("dequeueBuffer: IGraphicBufferProducer::dequeueBuffer"
+@@ -1547,7 +1622,21 @@ int Surface::queueBuffer(sp<GraphicBuffer>&& buffer, int fenceFd,
+     // ->   implementation calls IGraphicBufferConsumer::acquire/release immediately
+     // -> SurfaceListener::onBufferReleased callback triggers automatically
+     // ->   implementation calls Surface::dequeueBuffer
++#ifdef ENABLE_MTK_FPSGO
++    const uint64_t fpsgoIdentifier = reinterpret_cast<uintptr_t>(this);
++    uint64_t fpsgoBufferId = 0;
++    mGraphicBufferProducer->getUniqueId(&fpsgoBufferId);
++    // FPSGO keeps HWUI classification in a short-lived per-thread tree.
++    // Refresh it immediately before every RenderThread queue operation.
++    if (fpsgoIsHwuiThread()) {
++        fpsgoNotify(FPSGO_SWAP_BUFFER, 0, 0, 0, 0, 0);
++    }
++    fpsgoNotify(FPSGO_QUEUE, 1, fpsgoBufferId, 0, 0, fpsgoIdentifier);
++#endif
+     status_t err = mGraphicBufferProducer->queueBuffer(slot, input, &output);
++#ifdef ENABLE_MTK_FPSGO
++    fpsgoNotify(FPSGO_QUEUE, 0, fpsgoBufferId, 0, 0, fpsgoIdentifier);
++#endif
+     {
+         Mutex::Autolock lock(mMutex);
+
+@@ -2366,6 +2455,16 @@ int Surface::connect(int api, const sp<SurfaceListener>& listener, bool reportBu
+         }
+         SURF_LOGE_IF(idErr != NO_ERROR, "Unable to get ID from IGBP: %d", idErr);
+         mIsConnected = true;
++#ifdef ENABLE_MTK_FPSGO
++        const uint64_t fpsgoIdentifier = reinterpret_cast<uintptr_t>(this);
++        uint64_t fpsgoBufferId = 0;
++        mGraphicBufferProducer->getUniqueId(&fpsgoBufferId);
++        // In the MediaTek ABI queue_SF means that this producer queues to
++        // SurfaceFlinger. App and HWUI surfaces must be registered as 1;
++        // registering 0 makes the composer bypass them before FBT.
++        fpsgoNotify(FPSGO_BQID, 1, fpsgoBufferId, 1, api, fpsgoIdentifier);
++        fpsgoNotify(FPSGO_CONNECT, 1, fpsgoBufferId, 0, api, fpsgoIdentifier);
++#endif
+     }
+     #ifdef ENABLE_MTK_GED_KPI
+     // For MTK GED KPI, we need to grab the Surface owner's PID
+@@ -2423,7 +2522,18 @@ int Surface::connect(int api, const sp<SurfaceListener>& listener, bool reportBu
+ int Surface::disconnect(int api, IGraphicBufferProducer::DisconnectMode mode) {
+     ATRACE_CALL();
+     SURF_LOGV("Surface::disconnect");
++#ifdef ENABLE_MTK_FPSGO
++    const uint64_t fpsgoIdentifier = reinterpret_cast<uintptr_t>(this);
++    uint64_t fpsgoBufferId = 0;
++    mGraphicBufferProducer->getUniqueId(&fpsgoBufferId);
++#endif
+     int err = mGraphicBufferProducer->disconnect(api, mode);
++#ifdef ENABLE_MTK_FPSGO
++    if (err == NO_ERROR) {
++        fpsgoNotify(FPSGO_CONNECT, 0, fpsgoBufferId, 0, api, fpsgoIdentifier);
++        fpsgoNotify(FPSGO_BQID, 0, fpsgoBufferId, 1, api, fpsgoIdentifier);
++    }
++#endif
+     if (err == BAD_VALUE) {
+         SURF_LOGE("Surface failed to disconnect with error %d (%s). Likely the wrong API was "
+                   "requested (%d). Not cleaning up internals.",
