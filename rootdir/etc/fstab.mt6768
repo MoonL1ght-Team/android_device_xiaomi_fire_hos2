@@ -60,15 +60,8 @@ system_dlkm /system_dlkm ext4 ro wait,slotselect,avb,logical,first_stage_mount
 /dev/block/by-name/misc /misc emmc defaults defaults
 /dev/block/by-name/para /para emmc defaults defaults
 /dev/block/by-name/vendor_boot /vendor_boot emmc defaults defaults
-/dev/block/by-name/init_boot /init_boot emmc defaults defaults
-
-
-
 
 /dev/block/by-name/boot /boot emmc defaults first_stage_mount,nofail,slotselect
-
-
-
 
 
 /dev/block/by-name/vbmeta_vendor /vbmeta_vendor emmc defaults first_stage_mount,nofail,slotselect
@@ -117,3 +110,5 @@ system_dlkm /system_dlkm ext4 ro wait,slotselect,avb,logical,first_stage_mount
 
 
 /dev/block/by-name/vbmeta /vbmeta emmc defaults defaults
+
+/dev/block/zram0    none    swap    defaults    zramsize=60%,max_comp_streams=8
