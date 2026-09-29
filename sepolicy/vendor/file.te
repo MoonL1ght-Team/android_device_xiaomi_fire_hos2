@@ -55,10 +55,5 @@ type mtk_hal_gnss_exec, exec_type, vendor_file_type, file_type;
 type mtk_hal_gnss, domain;
 init_daemon_domain(mtk_hal_gnss)
 
-# Micharge
-type hal_micharge_default, domain;
-type hal_micharge_default_exec, exec_type, vendor_file_type, file_type;
-init_daemon_domain(hal_micharge_default)
-
 # Wifi
 type vendor_mac_vendor_data_file, data_file_type, file_type, mlstrustedobject;

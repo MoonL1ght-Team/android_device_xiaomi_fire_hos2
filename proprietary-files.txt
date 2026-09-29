@@ -752,12 +752,12 @@ vendor/etc/gnss/agps_profiles_conf2.xml|6cd41fb6b15f58c0799e1ab66ad5abe21c2fd4c9
 
 # Health
 # vendor/bin/hw/android.hardware.health-service.example
-vendor/bin/hw/vendor.xiaomi.hardware.micharge-service|db3b78b6b2d507bc19a9dc283e1411f70a0378f5
+# vendor/bin/hw/vendor.xiaomi.hardware.micharge-service|db3b78b6b2d507bc19a9dc283e1411f70a0378f5
 # vendor/etc/init/android.hardware.health-service.example.rc
-vendor/etc/init/vendor.xiaomi.hardware.micharge-service.rc|f20d2e6305d23a36596766d431f3374b0e31f161
+# vendor/etc/init/vendor.xiaomi.hardware.micharge-service.rc|f20d2e6305d23a36596766d431f3374b0e31f161
 # vendor/etc/vintf/manifest/android.hardware.health-service.example.xml
-vendor/etc/vintf/manifest/vendor.xiaomi.hardware.micharge.xml|990fbed1ec60687a314e3a668006d04156b5c1ed
-vendor/lib64/vendor.xiaomi.hardware.micharge-V2-ndk.so|d0049e7c26634eca76937c3eb8d57f68ffef046d
+# vendor/etc/vintf/manifest/vendor.xiaomi.hardware.micharge.xml|990fbed1ec60687a314e3a668006d04156b5c1ed
+# vendor/lib64/vendor.xiaomi.hardware.micharge-V2-ndk.so|d0049e7c26634eca76937c3eb8d57f68ffef046d
 
 # IR
 # vendor/bin/hw/android.hardware.ir@1.0-service
