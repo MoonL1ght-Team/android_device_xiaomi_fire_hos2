@@ -48,6 +48,7 @@ on property:ro.boot.board_id=TBD
     setprop ro.vendor.nfc.repair 1
     start vendor.nfc_hal_service
 
+on post-fs-data
 #Thermal
     mkdir /data/vendor/thermal 0771 root system
     mkdir /data/vendor/thermal/config 0771 root system
