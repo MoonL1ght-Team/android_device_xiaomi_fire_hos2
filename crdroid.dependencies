@@ -1,11 +1,13 @@
 [
   {
     "repository": "crdroidandroid/android_device_mediatek_sepolicy_vndr",
-    "target_path": "device/mediatek/sepolicy_vndr"
+    "target_path": "device/mediatek/sepolicy_vndr",
+    "branch": "16.0"
   },
   {
     "repository": "crdroidandroid/android_hardware_mediatek",
-    "target_path": "hardware/mediatek"
+    "target_path": "hardware/mediatek",
+    "branch": "16.0"
   },
   {
     "repository": "crdroidandroid/android_hardware_xiaomi",
@@ -14,5 +16,9 @@
   {
     "repository": "crdroidandroid/android_device_xiaomi_fire-kernel",
     "target_path": "device/xiaomi/fire-kernel"
+  },
+  {
+    "repository": "crdroidandroid/proprietary_vendor_xiaomi_fire",
+    "target_path": "vendor/xiaomi/fire"
   }
 ]
