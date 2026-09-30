@@ -29,8 +29,3 @@ apply_patch \
     "$root/frameworks/native" \
     "$fire_patches/frameworks_native/0001-libgui-feed-frames-to-mtk-fpsgo.patch" \
     "fire FPSGO libgui patch"
-
-apply_patch \
-    "$root/frameworks/base" \
-    "$fire_patches/frameworks_base/0001-SystemUI-cache-custom-header-on-screen-on.patch" \
-    "fire SystemUI custom header patch"
