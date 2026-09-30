@@ -702,16 +702,18 @@ vendor/lib64/liboemcrypto.so|d11c2253d6ae2e99a26dfccb200f98c96f1791f2
 #y system_ext/lib/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 #y system_ext/lib64/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so
 #y system_ext/lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
-vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service|f9ea5659ba8677460cbe60d85696b6fe61a89acf
-vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc|1fd336060d3ceea78a237367efe79c60d9e458c8
-vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml|4269b1975f83e5c2240738197515b192127a5ce0
-#y vendor/lib64/com.fingerprints.extension@1.0.so
+#y vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service
+#y vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc
+#y vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml
+vendor/lib64/hw/fingerprint.fpc.so:vendor/lib64/hw/fingerprint.fpc.default.so;FIX_SONAME|78c963de86b6bed798683408dd119f87450f778f|195ad03768637fb25344bc82e8487cf5aa52b3e9
+vendor/lib64/hw/fingerprint.goodix.so:vendor/lib64/hw/fingerprint.goodix.default.so;FIX_SONAME|c3a91abf143273f21a52f00f7ae05874ac9f878b|5a08d114ab16e43174468cdcaf50164764de4caa
+#y vendor/lib64/com.fingerprints.extension@1.0.so|25895177317bef93a57a514c3a6d0ceb53dea4d0
 vendor/lib64/libgf_ca.so|a3c555947256704bdfc13dee8d58ef0947bcb340
 vendor/lib64/libgf_hal.so|c56c50c606626d2ac9b1bc3bd79ca78583fd5fda
 vendor/lib64/libgoodixhwfingerprint.so|bc71aa9fc2fcd2a022e5fa4f7dba1429253995c3
-#y vendor/lib64/libmifpext.so
+vendor/lib64/libmifpext.so|04b651ff72c619f311b7d3e5e954287da634f612
 vendor/lib64/libvendor.goodix.hardware.biometrics.fingerprint@2.1.so|b53ef698f8d544648a3be4fd6fc9e50e05d1ea98
-#y vendor/lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
+#y vendor/lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so|6a945db2277861dfd58510b24b0a00e0b27bfc8a
 
 # Gatekeeper
 #y system_ext/lib/vendor.trustonic.tee-V1-ndk.so

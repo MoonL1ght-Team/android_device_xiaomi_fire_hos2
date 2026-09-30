@@ -1,4 +1,4 @@
-#
+# MIUI ADD:Fingerprint_MIUIFingerprintFrame
 # FPC1020 Touch sensor driver
 #
 # Copyright (c) 2013,2014 Fingerprint Cards AB <tech@fingerprints.com>
@@ -19,10 +19,11 @@
 #key 108   DPAD_DOWN VIRTUAL
 
 # Single Tap
-#key 105   DPAD_CENTER VIRTUAL
+key 105   DPAD_CENTER VIRTUAL
 
 # Double Tap
-#key 106   BUTTON_C VIRTUAL
+key 106   BUTTON_C VIRTUAL
 
 # Keymap between kernel and framework.
 # Refer to input-event-codes.h(kernel) and KeyEvent.java(framework) for more details.
+#END Fingerprint_MIUIFingerprintFrame

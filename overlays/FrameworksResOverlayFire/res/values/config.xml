@@ -117,7 +117,7 @@
     <!-- Auto-brightness debounce timings -->
     <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
     <integer name="config_autoBrightnessDarkeningLightDebounce">1000</integer>
-    <bool name="config_automatic_brightness_available">true</bool>
+    <bool name="config_automatic_brightness_available">false</bool>
 
     <!-- Navigation and gestures -->
     <bool name="config_showNavigationBar">true</bool>
@@ -134,10 +134,8 @@
     <integer name="config_num_physical_slots">2</integer>
     <bool name="config_cellBroadcastAppLinks">true</bool>
 
-    <!-- Biometrics: Goodix / FPC fingerprint on side key -->
-    <string-array name="config_biometric_sensors" translatable="false">
-        <item>0:2:15</item>
-    </string-array>
+    <!-- Indicates whether device has a power button fingerprint sensor. -->
+    <bool name="config_is_powerbutton_fps" translatable="false">true</bool>
 
     <!-- Battery and thermal safety -->
     <integer name="config_shutdownBatteryTemperature">580</integer>
