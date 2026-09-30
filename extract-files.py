@@ -119,6 +119,8 @@ lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
         'vendor.mediatek.hardware.videotelephony-V1-ndk',
+        'vendor.mediatek.hardware.bluetooth.audio@2.1',
+        'vendor.mediatek.hardware.bluetooth.audio@2.2',
     ): lib_fixup_vendor_suffix,
 }
 
