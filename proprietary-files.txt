@@ -959,10 +959,10 @@ vendor/lib64/libwvkeybox.so|684bb3d9fe2fcb4db669ebd67414382fb1628b86
 #y system_ext/lib64/vendor.mediatek.hardware.mtkpower@1.0.so
 #y system_ext/lib64/vendor.mediatek.hardware.mtkpower@1.1.so
 #y system_ext/lib64/vendor.mediatek.hardware.mtkpower@1.2.so
-vendor/bin/hw/vendor.mediatek.hardware.mtkpower-service.mediatek|71fce2d2e514258d3224bcdb8434cbf7af835f9e
+# vendor/bin/hw/vendor.mediatek.hardware.mtkpower-service.mediatek|71fce2d2e514258d3224bcdb8434cbf7af835f9e
 vendor/bin/hw/vendor.mediatek.hardware.mtkpower_applist-service.mediatek|88760c897fb70b229ea86872f74623d04a55e1b4
-vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-init.rc|7e3c98e23f16eb79cd41247b68a367bd1c94a9e9
-vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc|6abc429762f5c0e9d430535ef64237e5bcbcefb5
+# vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-init.rc|7e3c98e23f16eb79cd41247b68a367bd1c94a9e9
+# vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc|6abc429762f5c0e9d430535ef64237e5bcbcefb5
 vendor/lib/hw/power.default.so|f02387b672fc28a0d41f21bdfb081820566d105e
 vendor/lib/hw/vendor.mediatek.hardware.mtkpower-aidl-impl.so|f3fc278b9cbc43ba68206082c2686d5c62b31313
 vendor/lib/libpower_timer.so|a92a8253f1ba7e03e40b87342255f7f173da0111
@@ -1356,8 +1356,8 @@ vendor/etc/init/init.fmradio_drv.rc|8c67dfb2dd784e4936149474f4132b0a78f4ed4c
 vendor/etc/init/init.gps_drv.rc|37989279b79db8a5d910249c257744aa9efc4589
 vendor/etc/init/init.md_apps.rc|4eba4275df7baedf587bc5b73b371980c3e9276b
 # vendor/etc/init/init.thermal.rc
-# vendor/etc/init/init.thermal_manager.rc
-vendor/etc/init/init.thermalloadalgod.rc|d70cde3b8a1a1607f7a99475b3357a894907458f
+vendor/etc/init/init.thermal_manager.rc
+# vendor/etc/init/init.thermalloadalgod.rc|d70cde3b8a1a1607f7a99475b3357a894907458f
 vendor/etc/init/init.touch.rc|518888ce37bdf37d4df8d7fde7837af60a6c32f6
 vendor/etc/init/init.volte_imcb.rc|2b7e2e2f7aaf3ca710caf0523c93a817d95ef253
 vendor/etc/init/init.volte_imsm_93.rc|6f1e96e82ac18fdf0acc6791ab8db3a6519ca605

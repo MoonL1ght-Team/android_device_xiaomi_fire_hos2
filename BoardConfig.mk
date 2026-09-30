@@ -251,3 +251,6 @@ BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 SOONG_CONFIG_NAMESPACES += mediatek_gadget
 SOONG_CONFIG_mediatek_gadget += use_custom_usb_gadget_rc
 SOONG_CONFIG_mediatek_gadget_use_custom_usb_gadget_rc := true
+
+# HIDL interfaces exported by the MTK Power compatibility stub.
+DEVICE_MANIFEST_FILE += device/xiaomi/fire/configs/vintf/mtkpower-stub.xml

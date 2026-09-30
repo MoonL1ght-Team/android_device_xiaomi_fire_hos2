@@ -1,123 +1,102 @@
 {
   "Nodes": [
     {
-      "Name": "CPULittleClusterMaxFreq",
-      "Path": "/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq",
+      "Name": "CPULittleMinFreq",
+      "Paths": [
+        "/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq"
+      ],
       "Values": [
-        "2000000",
+        "1800000",
+        "1625000",
         "1500000",
-        "975000",
+        "1450000",
+        "1375000",
+        "1325000",
+        "1275000",
+        "1175000",
+        "1100000",
+        "1050000",
+        "999000",
+        "950000",
+        "900000",
+        "850000",
+        "774000",
         "500000"
       ],
-      "DefaultIndex": 0,
+      "DefaultIndex": 15,
       "ResetOnInit": true
     },
     {
-      "Name": "CPULittleClusterMinFreq",
-      "Path": "/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq",
+      "Name": "CPUBigMinFreq",
+      "Paths": [
+        "/sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq"
+      ],
       "Values": [
         "2000000",
-        "1500000",
-        "975000",
-        "500000"
+        "1950000",
+        "1900000",
+        "1850000",
+        "1800000",
+        "1710000",
+        "1621000",
+        "1532000",
+        "1443000",
+        "1354000",
+        "1295000",
+        "1176000",
+        "1087000",
+        "998000",
+        "909000",
+        "850000"
       ],
+      "DefaultIndex": 15,
       "ResetOnInit": true
     },
     {
-      "Name": "CPUBigClusterMaxFreq",
-      "Path": "/sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq",
+      "Name": "GEDDvfsMargin",
+      "Paths": [
+        "/sys/kernel/ged/hal/dvfs_margin_value"
+      ],
       "Values": [
-        "2050000",
-        "1670000",
-        "1308000",
-        "774000"
+        "100",
+        "75",
+        "50"
       ],
       "DefaultIndex": 0,
-      "ResetOnInit": true
-    },
-    {
-      "Name": "CPUBigClusterMinFreq",
-      "Path": "/sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq",
-      "Values": [
-        "2050000",
-        "1670000",
-        "1308000",
-        "774000"
-      ],
-      "ResetOnInit": true
-    },
-    {
-      "Name": "GPUMinFreq",
-      "Path": "/sys/devices/platform/13000000.mali/devfreq/13000000.mali/min_freq",
-      "Values": [
-        "950000",
-        "718000",
-        "511000",
-        "300000"
-      ],
-      "ResetOnInit": true
-    },
-    {
-      "Name": "GPUMaxFreq",
-      "Path": "/sys/devices/platform/13000000.mali/devfreq/13000000.mali/max_freq",
-      "Values": [
-        "950000",
-        "718000",
-        "511000",
-        "300000"
-      ],
-      "DefaultIndex": 0,
-      "ResetOnInit": true
-    },
-    {
-      "Name": "PowerHALMainState",
-      "Path": "vendor.powerhal.state",
-      "Values": [
-        "SUSTAINED_PERFORMANCE",
-        ""
-      ],
-      "Type": "Property"
-    },
-    {
-      "Name": "PowerHALAudioState",
-      "Path": "vendor.powerhal.audio",
-      "Values": [
-        "AUDIO_STREAMING_LOW_LATENCY",
-        ""
-      ],
-      "Type": "Property"
-    },
-    {
-      "Name": "PowerHALRenderingState",
-      "Path": "vendor.powerhal.rendering",
-      "Values": ["EXPENSIVE_RENDERING", ""],
-      "Type": "Property"
+      "ResetOnInit": true,
+      "AllowFailure": true
     }
   ],
   "Actions": [
     {
-      "PowerHint": "SUSTAINED_PERFORMANCE",
-      "Node": "PowerHALMainState",
-      "Duration": 0,
-      "Value": "SUSTAINED_PERFORMANCE"
+      "PowerHint": "INTERACTION",
+      "Node": "CPULittleMinFreq",
+      "Duration": 1000,
+      "Value": "1325000"
     },
     {
-      "PowerHint": "SUSTAINED_PERFORMANCE",
-      "Node": "CPUBigClusterMaxFreq",
-      "Duration": 0,
-      "Value": "2050000"
+      "PowerHint": "INTERACTION",
+      "Node": "CPUBigMinFreq",
+      "Duration": 1000,
+      "Value": "1532000"
     },
     {
-      "PowerHint": "SUSTAINED_PERFORMANCE",
-      "Node": "CPULittleClusterMaxFreq",
-      "Duration": 0,
+      "PowerHint": "LAUNCH",
+      "Node": "CPULittleMinFreq",
+      "Duration": 3000,
+      "Value": "1800000"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "CPUBigMinFreq",
+      "Duration": 3000,
       "Value": "2000000"
     },
     {
-      "PowerHint": "SUSTAINED_PERFORMANCE",
-      "Node": "GPUMaxFreq",
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "GEDDvfsMargin",
       "Duration": 0,
-      "Value": "950000"
+      "Value": "75"
     }
   ]
 }

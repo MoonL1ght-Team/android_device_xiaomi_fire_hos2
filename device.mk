@@ -134,6 +134,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/mediatek/libaedv \
+    hardware/mediatek/libmtkperf_client \
     hardware/mediatek/wlan/wifi_hal
 
 # Feed BufferQueue and HWUI frame events to the MediaTek FPSGO driver.
@@ -284,6 +285,19 @@ PRODUCT_PACKAGES += \
 # ConsumerIR
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.example
+
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power-service.pixel-libperfmgr \
+    vendor.mediatek.hardware.mtkpower@1.2-service.stub \
+    libmtkperf_client_vendor \
+    libmtkperf_client
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/init/init.power-libperfmgr.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.power-libperfmgr.rc
 
 # UFFD GC
 PRODUCT_ENABLE_UFFD_GC := true

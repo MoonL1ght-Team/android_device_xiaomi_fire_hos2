@@ -14,7 +14,6 @@ import /system_ext/etc/init/hw/init.aee.rc
 import /system/etc/init/update_verifier.rc
 import /vendor/etc/init/android.hardware.boot@1.2-service.rc
 import /vendor/etc/init/android.hardware.boot@1.2-service-lazy.rc
-import /vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc
 
 #NFC
 import /vendor/etc/init/hw/init.stnfc.rc

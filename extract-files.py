@@ -109,7 +109,7 @@ namespace_imports = [
 	'device/xiaomi/fire',
 	'hardware/mediatek',
 	'hardware/xiaomi',
-    'hardware/mediatek/libmtkperf_client',
+        'hardware/mediatek/libmtkperf_client',
 ]
 
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
@@ -261,6 +261,15 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_lock')
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
+    'vendor/etc/vintf/manifest/power-mediatek.xml': blob_fixup()
+        .regex_replace(
+            r'(?s)\s*<hal format="aidl">\s*'
+            r'<name>android\.hardware\.power</name>\s*'
+            r'<version>5</version>\s*'
+            r'<fqname>IPower/default</fqname>\s*'
+            r'</hal>',
+            '',
+        ),
 }
 
 module = ExtractUtilsModule(
