@@ -367,3 +367,6 @@ PRODUCT_COPY_FILES += \
 
 # HOS2 camera tuning, scenario definitions and models
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,vendor/xiaomi/fire/proprietary/vendor/etc/camera,$(TARGET_COPY_OUT_VENDOR)/etc/camera)
+# Expose vendor OEMCrypto to linkerconfig for the Widevine APEX
+PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
+    $(LOCAL_PATH)/configs/linkerconfig/vendor.json
