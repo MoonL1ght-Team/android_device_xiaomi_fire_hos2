@@ -238,7 +238,6 @@ PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
 # Extra files
-TARGET_USES_VULKAN := true
 TARGET_EXCLUDES_AUDIOFX := true
 
 # DRM (Clearkey)
