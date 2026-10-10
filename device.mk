@@ -149,6 +149,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
+# DTB
+# The prebuilt-kernel path has no rule for $(PRODUCT_OUT)/dtb.img and
+# vendor_boot.img depends on it, so these copies are required.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)-kernel/dtb.img:dtb.img \
+    $(LOCAL_PATH)-kernel/kernel:kernel
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.xiaomi
