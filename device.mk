@@ -247,7 +247,9 @@ TARGET_EXCLUDES_AUDIOFX := true
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
-# Bluetooth is provided by the stock vendor implementation.
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth-service.mediatek
 
 PRODUCT_PACKAGES += \
     audio.primary.default \
@@ -312,8 +314,8 @@ PRODUCT_PACKAGES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health-service.example \
-    android.hardware.health-service.example_recovery
+    android.hardware.health-service.mediatek \
+    android.hardware.health-service.mediatek-recovery
 
 # Lights
 PRODUCT_PACKAGES += \

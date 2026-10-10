@@ -263,9 +263,9 @@ vendor/etc/audio_param/Volume_AudioParam.xml|72648e5c22728c3476f068ef5caa3b60e7d
 vendor/etc/audio_param/Volume_ParamUnitDesc.xml|996e81f5cce1e67bed9c91c3d8ad3b7d28b89922
 
 # Bluetooth
-vendor/bin/hw/android.hardware.bluetooth-service-mediatek|937523314e132ab24fab470c3534daaddaecea6a
-vendor/etc/init/android.hardware.bluetooth-service-mediatek.rc|da1742131d39116bfebcefdaa08663f67a294046
-vendor/etc/vintf/manifest/android.hardware.bluetooth-service-mediatek.xml|1c8d161072d8723a6c855d79c9173ef822062f9b
+#vendor/bin/hw/android.hardware.bluetooth-service-mediatek|937523314e132ab24fab470c3534daaddaecea6a
+#vendor/etc/init/android.hardware.bluetooth-service-mediatek.rc|da1742131d39116bfebcefdaa08663f67a294046
+#vendor/etc/vintf/manifest/android.hardware.bluetooth-service-mediatek.xml|1c8d161072d8723a6c855d79c9173ef822062f9b
 vendor/lib/libbluetooth_mtk.so|0347e0af42a3b9a7b5c894384ecc42508f871a79
 vendor/lib/libbt-vendor.so|988367e503e5abe1d7f840192acefb59fd57a645
 vendor/lib/libnvram.so|428f3e8d466b443ce22f38779215d46f74c9ce7c
