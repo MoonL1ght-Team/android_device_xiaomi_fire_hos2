@@ -155,11 +155,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# DTB
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)-kernel/dtb.img:dtb.img \
-    $(LOCAL_PATH)-kernel/kernel:kernel
-
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.xiaomi
@@ -313,7 +308,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.example_recovery
 
 # Lights
-$(call soong_config_set_bool,lineagelight,scan_for_backlight_devices,$(TARGET_LIGHT_HAL_SCAN_FOR_BACKLIGHT_DEVICES))
 PRODUCT_PACKAGES += \
     android.hardware.light-service.lineage
 

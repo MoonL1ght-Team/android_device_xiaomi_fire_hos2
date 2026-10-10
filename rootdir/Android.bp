@@ -182,7 +182,7 @@ prebuilt_etc {
 // fstab
 prebuilt_etc {
     name: "fstab.emmc",
-    src: "etc/fstab.emmc",
+    src: "etc/fstab.mt6768",
     vendor: true,
 }
 

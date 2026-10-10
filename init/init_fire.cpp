@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <cstdlib>
 #include <string.h>
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
