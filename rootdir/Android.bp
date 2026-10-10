@@ -124,6 +124,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.fire.graphics.rc",
+    src: "etc/init.fire.graphics.rc",
+    sub_dir: "init",
+    device_specific: true,
+}
+
+prebuilt_etc {
     name: "init.vnd_fire.nfc.rc",
     src: "etc/init.vnd_fire.nfc.rc",
     sub_dir: "init",

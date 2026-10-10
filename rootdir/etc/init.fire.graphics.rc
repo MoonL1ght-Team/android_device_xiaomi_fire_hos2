@@ -1,0 +1,23 @@
+# Installed to /odm/etc/init so it is parsed after /vendor/etc/init and the
+# override takes effect. Stock runs the composer as ServiceCapacityLow, which
+# keeps it on the LITTLE cores although it sits on every frame's critical path.
+
+service vendor.hwcomposer /vendor/bin/hw/android.hardware.graphics.composer@3.3-service
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    task_profiles ProcessCapacityHigh HighPerformance
+    override
+
+service vendor.gralloc-v2 /vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    onrestart restart vendor.hwcomposer
+    onrestart restart camerahalserver
+    task_profiles ProcessCapacityHigh HighPerformance
+    override
