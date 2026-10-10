@@ -120,6 +120,17 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.mt6768:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6768 \
     $(LOCAL_PATH)/rootdir/etc/init.recovery.mt6768.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.mt6768.rc
 
+# Touch firmware for recovery, /vendor is not mounted there
+RECOVERY_TOUCH_FW := \
+    focaltech_8725_2_fw.bin \
+    focaltech_8725_fw.bin \
+    focaltech_ts_fw_.bin \
+    novatek_ts_fw.bin \
+    novatek_ts_mp.bin
+
+PRODUCT_COPY_FILES += \
+    $(foreach f,$(RECOVERY_TOUCH_FW),vendor/xiaomi/fire/proprietary/vendor/firmware/$(f):$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/firmware/$(f))
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \
