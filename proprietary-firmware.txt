@@ -1,10 +1,16 @@
+# Bootloader-stage firmware (gz, lk, scp, spmfw, sspm, tee) is not
+# shipped: preloader enforces the anti-rollback index fused into the
+# SoC, so flashing images older than what a device already runs drops
+# it into BROM. Users keep the firmware of their own stock build.
+# md1img stays, it carries the embedded vendor_boot (see pack_md1img.sh).
+
 # Unpinned blobs from missi-user 15 AP3A.240905.015.A2 OS2.0.212.0.VHZMIXM release-keys
 # Redmi Note 12S (OS2.0.212.0.VHZMIXM)
 
-gz.img;AB|2ede6c782c0e6072cb1328d318c150583d88bd0f
-lk.img;AB|90152c1a77f95f3a605e9266dd1c9c694520e33f
+#gz.img;AB|2ede6c782c0e6072cb1328d318c150583d88bd0f
+#lk.img;AB|90152c1a77f95f3a605e9266dd1c9c694520e33f
 md1img.img;AB|7c5f95d34be6d6e7a6dd704b18f4f9618492f036
-scp.img;AB|349460a062b935870d76030be3c6b176b791d7d9
-spmfw.img;AB|f2e3758bfcbd43ee56e50e5465f1df154086dfae
-sspm.img;AB|ac315b611bf8e95b3964515bec8d5153e7101a0e
-tee.img;AB|6773779ced36650be524593e9ee1d9e8d4161f4d
+#scp.img;AB|349460a062b935870d76030be3c6b176b791d7d9
+#spmfw.img;AB|f2e3758bfcbd43ee56e50e5465f1df154086dfae
+#sspm.img;AB|ac315b611bf8e95b3964515bec8d5153e7101a0e
+#tee.img;AB|6773779ced36650be524593e9ee1d9e8d4161f4d
