@@ -2,4 +2,4 @@ persist.sys.debug.fdtrack_abort_threshold=4096
 persist.sys.debug.fdtrack_enable_threshold=2048
 ro.nnapi.extensions.deny_on_product=true
 ro.support_one_handed_mode=true
-ro.surface_flinger.supports_background_blur=1
+ro.surface_flinger.supports_background_blur=0
