@@ -186,8 +186,7 @@ blob_fixups: blob_fixups_user_type = {
             b'\x00\x00\x80\x52\xc0\x03\x5f\xd6',
         ),
 
-    # MTK power HAL engine: the stock mtkpower service dlopens libpowerhal
-    # for every IPower hint, so without it boosts are silently dropped.
+    # Kept for MTK perf clients, the mtkpower service itself is not shipped
     (
         'vendor/lib/libpowerhal.so',
         'vendor/lib64/libpowerhal.so',
@@ -269,15 +268,6 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_lock')
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
-    'vendor/etc/vintf/manifest/power-mediatek.xml': blob_fixup()
-        .regex_replace(
-            r'(?s)\s*<hal format="aidl">\s*'
-            r'<name>android\.hardware\.power</name>\s*'
-            r'<version>5</version>\s*'
-            r'<fqname>IPower/default</fqname>\s*'
-            r'</hal>',
-            '',
-        ),
 }
 
 module = ExtractUtilsModule(

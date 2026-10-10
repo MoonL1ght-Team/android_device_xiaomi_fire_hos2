@@ -8,3 +8,10 @@ allow hal_power_default cgroup:file rw_file_perms;
 allow hal_power_default proc_cpufreq:dir search;
 allow hal_power_default proc_cpufreq:file rw_file_perms;
 allow hal_power_default sysfs_gpu:file rw_file_perms;
+
+# libperfmgr nodes on GKI 6.6 (powerhint.json)
+allow hal_power_default sysfs_dvfsrc_devfreq:dir search;
+allow hal_power_default sysfs_dvfsrc_devfreq:file rw_file_perms;
+allow hal_power_default sysfs_ged:dir search;
+allow hal_power_default sysfs_ged:file rw_file_perms;
+allow hal_power_default sysfs_gpu:dir search;

@@ -959,12 +959,12 @@ vendor/lib64/libwvkeybox.so|684bb3d9fe2fcb4db669ebd67414382fb1628b86
 #y system_ext/lib64/vendor.mediatek.hardware.mtkpower@1.0.so
 #y system_ext/lib64/vendor.mediatek.hardware.mtkpower@1.1.so
 #y system_ext/lib64/vendor.mediatek.hardware.mtkpower@1.2.so
-vendor/bin/hw/vendor.mediatek.hardware.mtkpower-service.mediatek|71fce2d2e514258d3224bcdb8434cbf7af835f9e
+#vendor/bin/hw/vendor.mediatek.hardware.mtkpower-service.mediatek|71fce2d2e514258d3224bcdb8434cbf7af835f9e
 vendor/bin/hw/vendor.mediatek.hardware.mtkpower_applist-service.mediatek|88760c897fb70b229ea86872f74623d04a55e1b4
 vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-init.rc|7e3c98e23f16eb79cd41247b68a367bd1c94a9e9
-vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc|6abc429762f5c0e9d430535ef64237e5bcbcefb5
+#vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc|6abc429762f5c0e9d430535ef64237e5bcbcefb5
 vendor/lib/hw/power.default.so|f02387b672fc28a0d41f21bdfb081820566d105e
-vendor/lib/hw/vendor.mediatek.hardware.mtkpower-aidl-impl.so|f3fc278b9cbc43ba68206082c2686d5c62b31313
+#vendor/lib/hw/vendor.mediatek.hardware.mtkpower-aidl-impl.so|f3fc278b9cbc43ba68206082c2686d5c62b31313
 vendor/lib/libpower_timer.so|a92a8253f1ba7e03e40b87342255f7f173da0111
 vendor/lib/vendor.mediatek.hardware.mtkpower-V2-ndk.so|6ac87008d13a30d5d9bb13f50546b0ab938fac2a
 #y vendor/lib/vendor.mediatek.hardware.mtkpower@1.0.so
@@ -972,7 +972,7 @@ vendor/lib/vendor.mediatek.hardware.mtkpower-V2-ndk.so|6ac87008d13a30d5d9bb13f50
 #y vendor/lib/vendor.mediatek.hardware.mtkpower@1.2.so
 vendor/lib/vendor.mediatek.hardware.mtkpower_applist-V2-ndk.so|45cedf75aebd71376e42e27a04ef8c11b75abfcf
 vendor/lib64/hw/power.default.so|0a0e8ed68d8d432453fe94752aab22620cc501bc
-vendor/lib64/hw/vendor.mediatek.hardware.mtkpower-aidl-impl.so|30164675e1d7f8c7393e706a50c48bab4cc04c09
+#vendor/lib64/hw/vendor.mediatek.hardware.mtkpower-aidl-impl.so|30164675e1d7f8c7393e706a50c48bab4cc04c09
 vendor/lib64/libpower_timer.so|a1ee8ea29a017d6511ec37cfec3e177d4f33d12b
 vendor/lib64/vendor.mediatek.hardware.mtkpower-V1-ndk.so|c98b96ccf0f56836768ac9e4deb55b345403a3b2
 vendor/lib64/vendor.mediatek.hardware.mtkpower-V2-ndk.so|8eb2f7347f24330dc7c17e4524baed0dcfa91f62
@@ -1443,7 +1443,7 @@ vendor/etc/vintf/manifest/mapper.mediatek.xml|4fdb0e542c7b1aac44d73425b4265f6501
 #y vendor/etc/vintf/manifest/mrm.xml
 vendor/etc/vintf/manifest/mtk_lbs_service.xml|86b5bdafb9ee87ad941367f498c6200c84030359
 vendor/etc/vintf/manifest/mtkpower_applist-mtk-default.xml|f68d8ae13ff9546a46f9c19a32385f1733e45e2c
-vendor/etc/vintf/manifest/power-mediatek.xml|6620d8fd86847619db8a6550e1762f94c20e87f1
+#vendor/etc/vintf/manifest/power-mediatek.xml|6620d8fd86847619db8a6550e1762f94c20e87f1
 # vendor/etc/vintf/manifest/thermal-mediatek.xml
 #y vendor/etc/vintf/manifest/vendor.xiaomi.hardware.mimd@1.0-service.xml
 #y vendor/etc/vintf/manifest/vendor.xiaomi.hardware.misys@1.0.xml
@@ -2061,7 +2061,7 @@ vendor/lib/android.hardware.bluetooth.audio-impl-mediatek.so|f312260c1d66b6456ca
 vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so|bd49ca4a790a20805a519a842ea36545b251bda6
 vendor/lib/android.hardware.audio.core-impl-mediatek.so|797dcc11ef101ff6e7693c9952a6f6150d3fd7d9|7ba88c1c57f1a8b5fd4b16335c191a4874ef9ad4
 vendor/lib64/android.hardware.audio.core-impl-mediatek.so|ebb06e9585640bfe451a46cd81847973d376b1fa|921b4b76ef729ad0c99b015fe0d9ccaddf8b4740
-vendor/lib64/android.hardware.power-service-mediatek.so|37bdf43a1a7abb37fe81a780db5eda975319715e
+#vendor/lib64/android.hardware.power-service-mediatek.so|37bdf43a1a7abb37fe81a780db5eda975319715e
 
 vendor/etc/init.insmod.mt6768.cfg|68ec05d8a374b17130909562a042ce6d8a438277
 
