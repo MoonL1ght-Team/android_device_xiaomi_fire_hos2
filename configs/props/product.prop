@@ -22,7 +22,6 @@ dalvik.vm.image-dex2oat-cpu-set=0,1,2,3
 debug.sf.disable_backpressure=1
 persist.audio.button_jack.profile=volume
 persist.audio.button_jack.switch=0
-persist.bluetooth.disableabsvol=true
 persist.displayfeature.dc_backlight.enable=false
 persist.sys.mdlog_dumpback=2
 persist.sys.usap_pool_enabled=false
