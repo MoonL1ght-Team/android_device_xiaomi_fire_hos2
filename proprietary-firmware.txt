@@ -4,8 +4,8 @@
 # it into BROM. Users keep the firmware of their own stock build.
 # md1img stays, it carries the embedded vendor_boot (see pack_md1img.sh).
 
-# Unpinned blobs from missi-user 15 AP3A.240905.015.A2 OS2.0.212.0.VHZMIXM release-keys
-# Redmi Note 12S (OS2.0.212.0.VHZMIXM)
+# Unpinned blobs from fire OS2.0.209.0.VMXMIXM (global)
+# Redmi 12 4G (fire)
 
 #gz.img;AB|2ede6c782c0e6072cb1328d318c150583d88bd0f
 #lk.img;AB|90152c1a77f95f3a605e9266dd1c9c694520e33f
