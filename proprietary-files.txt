@@ -279,29 +279,29 @@ vendor/lib64/libnvram_sec.so|29a20f3502c49394900eeafb9370dafb5eaaf46c
 vendor/lib/hw/android.hardware.bluetooth.audio@2.0-impl.so|01e852947285b8d7c909d4bdd299213da09f710f
 vendor/lib/hw/android.hardware.bluetooth.audio@2.1-impl.so|6e341484c56e9ea6a30f198f162a1f87accc46e9
 #y vendor/lib/hw/audio.bluetooth.default.so
-vendor/lib/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so|f615007f2815221101ec24557d7a4ae5cbd27ea8
-vendor/lib/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so|758b1a04fb148299ed9b5a7ffa1adbf8796cb3fd
+#y vendor/lib/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so|f615007f2815221101ec24557d7a4ae5cbd27ea8
+#y vendor/lib/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so|758b1a04fb148299ed9b5a7ffa1adbf8796cb3fd
 #y vendor/lib/libaconfig_storage_read_api_cc.so
 #y vendor/lib/libbluetooth_audio_session.so
 #y vendor/lib/libbluetooth_audio_session_aidl.so
 vendor/lib/libbluetooth_audio_session_mediatek.so|18a7eab772edd4ad8cd41d2b085fb3d256d51468
 vendor/lib/vendor.mediatek.hardware.audio@6.1.so|ff7431e73d5cb51a349788d473893790ada16aa9
 vendor/lib/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so|d024746f5fb23f7bb1ff201d8f5422ec119dfdcb
-vendor/lib/vendor.mediatek.hardware.bluetooth.audio@2.1.so|6090bf9df8dc8eeeb7abdc1a763efdc57aac2d1b
-vendor/lib/vendor.mediatek.hardware.bluetooth.audio@2.2.so|8c465a0118e5d07f1bb1d11faf5b2dde9a5e6413
+#y vendor/lib/vendor.mediatek.hardware.bluetooth.audio@2.1.so|6090bf9df8dc8eeeb7abdc1a763efdc57aac2d1b
+#y vendor/lib/vendor.mediatek.hardware.bluetooth.audio@2.2.so|8c465a0118e5d07f1bb1d11faf5b2dde9a5e6413
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so|4413b7e0d84ceb347a03981c8a1928ed181c3c87
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so|72e02c75ad75a1efd6d3f9fa6fd67752052407e8
 #y vendor/lib64/hw/audio.bluetooth.default.so
-vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so|89715e6107753758e9f90b50f813b470be2bc76a
-vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so|ef8f1842cec2b993d1eacf7b468dd06a8d0d13f5
+#y vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so|89715e6107753758e9f90b50f813b470be2bc76a
+#y vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so|ef8f1842cec2b993d1eacf7b468dd06a8d0d13f5
 #y vendor/lib64/libaconfig_storage_read_api_cc.so
 #y vendor/lib64/libbluetooth_audio_session.so
 #y vendor/lib64/libbluetooth_audio_session_aidl.so
 vendor/lib64/libbluetooth_audio_session_mediatek.so|a864f3217581afd3d757ae842e11078daf5f8535
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so|faa53e613772f705d7359e9ab35d09504980c656
 vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so|f20b18b75f951b2b38642ed95e2f57647861e88e
-vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.1.so|9ec00dbff22823ede8fec804b8d18bd1f7e34908
-vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.2.so|7e827abdb7bb53d6a56becf0a9e1556e5991c6f8
+#y vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.1.so|9ec00dbff22823ede8fec804b8d18bd1f7e34908
+#y vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.2.so|7e827abdb7bb53d6a56becf0a9e1556e5991c6f8
 
 # Boot
 # vendor/bin/hw/android.hardware.boot-service.mtk
