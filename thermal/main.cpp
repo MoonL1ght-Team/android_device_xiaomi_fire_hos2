@@ -27,6 +27,18 @@ class Thermal final : public BnThermal {
     std::vector<Subscription<ICoolingDeviceChangedCallback, CoolingType>> coolingCallbacks;
     std::map<std::string, Temperature> previous;
     std::map<std::string, long long> previousCooling;
+    // thermal_zone numbering is fixed once a driver has registered, so resolve
+    // each sensor once instead of rescanning /sys/class/thermal on every read.
+    std::mutex zoneLock;
+    std::map<std::string, fs::path> zones;
+
+    fs::path zoneFor(const fire::Sensor& sensor) {
+        std::lock_guard guard(zoneLock);
+        if (const auto it = zones.find(sensor.zone); it != zones.end()) return it->second;
+        auto zone = fire::findZone(root, sensor.zone);
+        if (!zone.empty()) zones.emplace(sensor.zone, zone);  // retry later if not there yet
+        return zone;
+    }
 
     template <class C, class T>
     ScopedAStatus add(std::vector<Subscription<C, T>>& list, const std::shared_ptr<C>& cb,
@@ -53,7 +65,7 @@ public:
     ScopedAStatus getTemperatures(std::vector<Temperature>* out) override {
         out->clear();
         for (const auto& sensor : fire::sensors) {
-            auto zone = fire::findZone(root, sensor.zone);
+            const auto zone = zoneFor(sensor);
             if (zone.empty()) continue;
             auto value = fire::temperature(zone / "temp");
             if (!value) continue;
@@ -75,7 +87,7 @@ public:
     ScopedAStatus getTemperatureThresholds(std::vector<TemperatureThreshold>* out) override {
         out->clear();
         for (const auto& sensor : fire::sensors) {
-            if (fire::findZone(root, sensor.zone).empty()) continue;
+            if (zoneFor(sensor).empty()) continue;
             TemperatureThreshold t;
             t.name = sensor.name;
             t.type = static_cast<TemperatureType>(sensor.type);
@@ -151,6 +163,7 @@ public:
             temperatureListeners = callbacks;
             coolingListeners = coolingCallbacks;
         }
+        if (temperatureListeners.empty() && coolingListeners.empty()) return;
         std::vector<Temperature> temperatures;
         if (!getTemperatures(&temperatures).isOk())
             __android_log_print(ANDROID_LOG_ERROR, "fire-thermal", "No readable thermal zones");
