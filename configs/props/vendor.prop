@@ -342,7 +342,6 @@ drm.service.enabled=true
 init.userspace_reboot.is_supported=true
 persist.adb.nonblocking_ffs=0
 persist.sys.dalvik.vm.lib.2=libart.so
-persist.sys.usb.config=mtp,adb
 persist.vendor.factory.GB2312=yes
 persist.vendor.sensor.mischeck=true
 ro.control_privapp_permissions=enforce
