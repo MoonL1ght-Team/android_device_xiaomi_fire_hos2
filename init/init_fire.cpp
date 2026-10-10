@@ -27,64 +27,55 @@ void property_override(string prop, string value)
         __system_property_add(prop.c_str(), prop.size(), value.c_str(), value.size());
 }
 
+struct mem_tier {
+    unsigned long long max_mb;
+    const char *heapstartsize, *heapgrowthlimit, *heapsize,
+               *heaptargetutilization, *heapminfree, *heapmaxfree;
+    const char *partialstall, *completestall, *thrashlim, *thrashlimdec,
+               *swapfreelow;
+};
+
+// Redmi 12 ships with 2/4/6/8 GB, totalram reports ~0.2-0.5 GB less.
+// Heap values follow AOSP phone-xhdpi-*-dalvik-heap.mk.
+static const mem_tier kTiers[] = {
+    // 2 GB
+    { 2560, "8m", "192m", "512m", "0.75", "512k", "8m",
+      "200", "700", "30", "50", "10" },
+    // 4 GB
+    { 4608, "8m", "192m", "512m", "0.6", "8m", "16m",
+      "100", "700", "60", "25", "10" },
+    // 6 GB
+    { 6656, "16m", "256m", "512m", "0.5", "8m", "32m",
+      "70", "700", "80", "20", "15" },
+    // 8 GB
+    { ~0ull, "16m", "256m", "512m", "0.5", "8m", "32m",
+      "70", "700", "100", "10", "20" },
+};
+
 void configure_dalvik_and_lmkd()
 {
-    string heapstartsize, heapgrowthlimit, heapsize, heapminfree,
-           heapmaxfree, heaptargetutilization;
-
-    string partialstall, completestall, thrashlim, thrashlimdec,
-           swapfreelow, upressure;
-
     struct sysinfo sys;
     sysinfo(&sys);
 
-    // 8GB RAM tier (~7.4-7.6 GB reported)
-    if (sys.totalram > 6144ull * 1024 * 1024) {
-        heapstartsize = "16m";
-        heapgrowthlimit = "256m";
-        heapsize = "512m";
-        heaptargetutilization = "0.5";
-        heapminfree = "8m";
-        heapmaxfree = "32m";
+    const unsigned long long total_mb =
+            (unsigned long long)sys.totalram * sys.mem_unit / (1024 * 1024);
 
-        partialstall = "70";
-        completestall = "140";
-        thrashlim = "90";
-        thrashlimdec = "15";
-        swapfreelow = "20";
-        upressure = "50";
-    }
-    // 4GB RAM tier (~3.6-3.7 GB reported) - tuned for eMMC 5.1 latency
-    else {
-        heapstartsize = "8m";
-        heapgrowthlimit = "192m";
-        heapsize = "512m";
-        heaptargetutilization = "0.65";
-        heapminfree = "4m";
-        heapmaxfree = "16m";
+    const mem_tier *t = &kTiers[0];
+    while (total_mb > t->max_mb)
+        t++;
 
-        // Looser PSI thresholds to avoid I/O blocking on eMMC
-        partialstall = "90";
-        completestall = "260";
-        thrashlim = "65";
-        thrashlimdec = "25";
-        swapfreelow = "15";
-        upressure = "65";
-    }
+    property_override("dalvik.vm.heapstartsize", t->heapstartsize);
+    property_override("dalvik.vm.heapgrowthlimit", t->heapgrowthlimit);
+    property_override("dalvik.vm.heapsize", t->heapsize);
+    property_override("dalvik.vm.heaptargetutilization", t->heaptargetutilization);
+    property_override("dalvik.vm.heapminfree", t->heapminfree);
+    property_override("dalvik.vm.heapmaxfree", t->heapmaxfree);
 
-    property_override("dalvik.vm.heapstartsize", heapstartsize);
-    property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_override("dalvik.vm.heapsize", heapsize);
-    property_override("dalvik.vm.heaptargetutilization", heaptargetutilization);
-    property_override("dalvik.vm.heapminfree", heapminfree);
-    property_override("dalvik.vm.heapmaxfree", heapmaxfree);
-
-    property_override("ro.lmk.psi_partial_stall_ms", partialstall);
-    property_override("ro.lmk.psi_complete_stall_ms", completestall);
-    property_override("ro.lmk.thrashing_limit", thrashlim);
-    property_override("ro.lmk.thrashing_limit_decay", thrashlimdec);
-    property_override("ro.lmk.swap_free_low_percentage", swapfreelow);
-    property_override("ro.lmk.upgrade_pressure", upressure);
+    property_override("ro.lmk.psi_partial_stall_ms", t->partialstall);
+    property_override("ro.lmk.psi_complete_stall_ms", t->completestall);
+    property_override("ro.lmk.thrashing_limit", t->thrashlim);
+    property_override("ro.lmk.thrashing_limit_decay", t->thrashlimdec);
+    property_override("ro.lmk.swap_free_low_percentage", t->swapfreelow);
 }
 
 void vendor_load_properties()
