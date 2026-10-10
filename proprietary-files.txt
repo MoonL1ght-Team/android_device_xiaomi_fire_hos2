@@ -1928,6 +1928,8 @@ vendor/lib64/librt_extamp_intf.so|d36a5166c8dcc5a71a724c49d9c8a7929fa39ce2
 #y vendor/lib64/libruy.so
 #y vendor/lib64/libscltm.so
 vendor/lib64/libsensor_custom.so|fc737f64d693e19e5b8ec23e7dd48f0ebcc196a5
+vendor/lib/libmmc5603.so
+vendor/lib64/libmmc5603.so
 vendor/lib64/libsimaka.so|c9ec53eeb1973a77abdcec35f6cf5a73fd11ac83
 vendor/lib64/libsimlock.so|11ed16fb3144164b5eee9dbc7f4425f365186997
 vendor/lib64/libsimmelock.so|f11765fa8163dbbe82568581d75be7d1daa09c10
