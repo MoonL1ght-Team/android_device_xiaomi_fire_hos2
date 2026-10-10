@@ -1531,7 +1531,7 @@ vendor/lib/libMtkSpeechEnh.so|6df892420ba2bb6866ddc4aaa237bd361a976f37
 vendor/lib/libMtkSpeechEnh_swb.so|b64adfac9153268a125d3f104ec3541298161ae5
 vendor/lib/libQstAlgo.so|0bce3eb63cb461a23a645e31b78a202a5025ba5e
 vendor/lib/lib_iir.so|80bc8e19ee38ba8e775daaa6db1b321ed0d00366
-#y vendor/lib/lib_power_applist.so
+vendor/lib/lib_power_applist.so
 vendor/lib/libaal_cust.so|00beb0ced74301f3766e1b373024881ffc71d382
 vendor/lib/libaal_key.so|a167159cc3a281ca14cc1f052e2b42abe740dad3
 vendor/lib/libapmonitor_vendor.so|f688efa0de6582f6026a5c944c0bc8dba7fcf36b
@@ -1611,7 +1611,7 @@ vendor/lib/libpcdbi.so|89d5e475c455d77a2ff05731ec623a6bb7904d7c
 vendor/lib/libpcdmr.so|7f97375f23bbaec77e02a836d66ba9da7e581215
 vendor/lib/libperfctl_vendor.so|2d71a19fbf2a173efeb93b018430b365b4b5fcda
 #y vendor/lib/libpkm.so
-#y vendor/lib/libpowerhal.so
+vendor/lib/libpowerhal.so
 vendor/lib/libpowerhalwrap_vendor.so|760ec29bbeaf36242c2cf197b6c5760cbced75d3
 vendor/lib/libpq_cust_base.so|8aacedb54500524e2d112144b7ea44f83a4396a8
 vendor/lib/librgbwlightsensor.so|6b0bd05811e69feda48e3d7fba037b8d70feca42
@@ -1705,7 +1705,7 @@ vendor/lib64/libSonyIMX386PdafLibraryWrapper.so|1742112d83168fa58f99751e01f486d1
 vendor/lib64/libSonyIMX519PdafLibrary.so|c89ae5b901deecd554662de1d930f4e9c34c40e1
 vendor/lib64/libSonyIMX519PdafLibraryWrapper.so|732cf99ed075779ad290c5640b938d46564eee66
 vendor/lib64/lib_iir.so|b32612c38e0d2a4427b37ff8e99a2b0b23e209bf
-#y vendor/lib64/lib_power_applist.so
+vendor/lib64/lib_power_applist.so
 vendor/lib64/libaal_cust.so|f2c0cda8b5a3750afb9ae1b7f0dd9355c1377842
 vendor/lib64/libaal_key.so|02f1a6a1e7a474d8a6e9ff1655c5b4f34c386879
 vendor/lib64/libacdk.so|a0609c452ae8b389804520c22dc690b220e58e0a
@@ -1915,7 +1915,7 @@ vendor/lib64/libpcdbi.so|e9f1711f92ace83c16b6c1766020626e5b7df053
 vendor/lib64/libpcdmr.so|5d045298e20afeb065d0bee1f8e4f73e936bebe3
 vendor/lib64/libperfctl_vendor.so|00c193f5b92aa3558dd2cca05e2e3c7c91b99e88
 #y vendor/lib64/libpkm.so
-#y vendor/lib64/libpowerhal.so
+vendor/lib64/libpowerhal.so
 vendor/lib64/libpowerhalwrap_vendor.so|6594f2f337053018434a850b4bb722a3a4b9ed72
 vendor/lib64/libpq_cust_base.so|ca55384577fe05de3bc8016af641a9d656f9f646
 vendor/lib/mt6768/libdpframework.so;SYMLINK=vendor/lib/libdpframework.so|8f40408e6ddd7678d3fcd2a959e1b6874c5e1401

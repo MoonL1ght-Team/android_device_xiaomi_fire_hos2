@@ -186,6 +186,16 @@ blob_fixups: blob_fixups_user_type = {
             b'\x00\x00\x80\x52\xc0\x03\x5f\xd6',
         ),
 
+    # MTK power HAL engine: the stock mtkpower service dlopens libpowerhal
+    # for every IPower hint, so without it boosts are silently dropped.
+    (
+        'vendor/lib/libpowerhal.so',
+        'vendor/lib64/libpowerhal.so',
+        'vendor/lib/lib_power_applist.so',
+        'vendor/lib64/lib_power_applist.so',
+    ): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-hos2.so'),
+
     # Audio AIDL HOS2 stack
     ('vendor/bin/hw/android.hardware.audio.service-aidl.mediatek'): blob_fixup()
         .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
