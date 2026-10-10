@@ -47,10 +47,6 @@ genfscon sysfs /devices/platform/1100d000.i2c/i2c-6/6-006a/power_supply/primary_
 # Touchpanel
 genfscon sysfs /touchpanel/ u:object_r:sysfs_touchpanel:s0
 
-# Vibrator
-genfscon sysfs /devices/platform/aw8622/activate u:object_r:vendor_sysfs_aw8622:s0
-genfscon sysfs /devices/platform/aw8622/duration u:object_r:vendor_sysfs_aw8622:s0
-
 # Wakeup (https://lkml.org/lkml/2019/8/6/1275)
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-rtc/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt635x-auxadc/wakeup u:object_r:sysfs_wakeup:s0
