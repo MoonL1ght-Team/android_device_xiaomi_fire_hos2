@@ -634,6 +634,10 @@ on early-boot
     verity_update_state
 
 on boot
+    # Lineage Health charging control
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0664 /sys/class/power_supply/battery/input_suspend
+
     write /proc/bootprof "INIT:boot"
 
     write /proc/sys/vm/dirty_writeback_centisecs 300
