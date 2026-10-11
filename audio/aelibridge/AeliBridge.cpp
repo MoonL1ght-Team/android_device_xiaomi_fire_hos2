@@ -38,6 +38,8 @@
 #include <system/audio_aidl_utils.h>
 #include <system/audio_effect.h>
 
+#include <aidl/android/hardware/audio/effect/DefaultExtension.h>
+
 #include "effect-impl/EffectImpl.h"
 
 using aidl::android::hardware::audio::effect::DefaultExtension;
