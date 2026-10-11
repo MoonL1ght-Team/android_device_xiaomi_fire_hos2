@@ -1,0 +1,23 @@
+From: GADGETNiK <playgadgetnik@gmail.com>
+Subject: [PATCH] DeviceNamePreference: Fall back to ro.product.marketname
+
+Match the About phone header, which already prefers the marketing name
+over the model number when no device name is set.
+
+---
+ src/com/android/settings/deviceinfo/DeviceNamePreference.kt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/com/android/settings/deviceinfo/DeviceNamePreference.kt b/src/com/android/settings/deviceinfo/DeviceNamePreference.kt
+--- a/src/com/android/settings/deviceinfo/DeviceNamePreference.kt
++++ b/src/com/android/settings/deviceinfo/DeviceNamePreference.kt
+@@ -59,7 +59,8 @@
+         context.resources.getBoolean(R.bool.config_show_device_name)
+ 
+     override fun getSummary(context: Context): CharSequence? =
+-        SettingsGlobalStore.get(context).getString(DEVICE_NAME) ?: Build.MODEL
++        SettingsGlobalStore.get(context).getString(DEVICE_NAME)
++            ?: android.os.SystemProperties.get("ro.product.marketname", Build.MODEL)
+ 
+     override fun createWidget(context: Context) = ValidatedEditTextPreference(context)
+ 

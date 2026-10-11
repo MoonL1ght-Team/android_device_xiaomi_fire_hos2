@@ -29,3 +29,13 @@ apply_patch \
     "$root/frameworks/native" \
     "$fire_patches/frameworks_native/0001-libgui-feed-frames-to-mtk-fpsgo.patch" \
     "fire FPSGO libgui patch"
+
+apply_patch \
+    "$root/frameworks/base" \
+    "$fire_patches/frameworks_base/0001-SettingsProvider-default-device-name-from-marketname.patch" \
+    "fire SettingsProvider device name patch"
+
+apply_patch \
+    "$root/packages/apps/Settings" \
+    "$fire_patches/packages_apps_Settings/0001-DeviceNamePreference-fall-back-to-marketname.patch" \
+    "fire Settings device name patch"

@@ -78,7 +78,25 @@ void configure_dalvik_and_lmkd()
     property_override("ro.lmk.swap_free_low_percentage", t->swapfreelow);
 }
 
+// heat is the NFC variant of fire, both are sold as Xiaomi Redmi 12 4G
+void set_marketname()
+{
+    string device = GetProperty("ro.product.vendor.device", "");
+    if (device.empty())
+        device = GetProperty("ro.product.odm.device", "");
+    if (device.empty())
+        device = GetProperty("ro.product.device", "");
+
+    const string name = device == "heat" ? "Xiaomi Redmi 12 4G NFC" : "Xiaomi Redmi 12 4G";
+
+    property_override("ro.product.marketname", name);
+    property_override("ro.product.product.marketname", name);
+    // Name used by the Bluetooth stack until the user renames the device
+    property_override("bluetooth.device.default_name", name);
+}
+
 void vendor_load_properties()
 {
+    set_marketname();
     configure_dalvik_and_lmkd();
 }

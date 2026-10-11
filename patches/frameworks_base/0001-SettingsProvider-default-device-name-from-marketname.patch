@@ -1,0 +1,24 @@
+From: GADGETNiK <playgadgetnik@gmail.com>
+Subject: [PATCH] SettingsProvider: Default device name from ro.product.marketname
+
+Use the marketing name for the initial Settings.Global.DEVICE_NAME when
+the device sets one, instead of the bare model number.
+
+---
+ packages/SettingsProvider/src/com/android/providers/settings/DatabaseHelper.java | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/packages/SettingsProvider/src/com/android/providers/settings/DatabaseHelper.java b/packages/SettingsProvider/src/com/android/providers/settings/DatabaseHelper.java
+--- a/packages/SettingsProvider/src/com/android/providers/settings/DatabaseHelper.java
++++ b/packages/SettingsProvider/src/com/android/providers/settings/DatabaseHelper.java
+@@ -2537,7 +2537,9 @@
+     }
+ 
+     private String getDefaultDeviceName() {
+-        return mContext.getResources().getString(R.string.def_device_name_simple, Build.MODEL);
++        String name = android.os.SystemProperties.get("ro.product.marketname", "");
++        return mContext.getResources().getString(R.string.def_device_name_simple,
++                name.isEmpty() ? Build.MODEL : name);
+     }
+ 
+     private TelephonyManager getTelephonyManager() {
