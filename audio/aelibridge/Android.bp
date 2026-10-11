@@ -1,0 +1,40 @@
+//
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// AIDL effect library that hosts legacy (AELI) effect libraries, such as
+// Dolby DAP, inside the AIDL effect HAL.
+cc_library_shared {
+    name: "libaelibridge",
+    vendor: true,
+    relative_install_path: "soundfx",
+    srcs: [
+        ":effectCommonFile",
+        "AeliBridge.cpp",
+    ],
+    defaults: [
+        "aidlaudioeffectservice_defaults",
+        "latest_android_hardware_audio_common_ndk_shared",
+    ],
+    header_libs: [
+        "libaudioeffects",
+        "libhardware_headers",
+    ],
+    shared_libs: [
+        "libaudio_aidl_conversion_common_ndk",
+        "libaudio_aidl_conversion_effect_ndk",
+        "libaudioutils",
+        "libbase",
+        "libcutils",
+        "libdl",
+        "liblog",
+    ],
+    required: ["aeli_bridge.conf"],
+}
+
+prebuilt_etc {
+    name: "aeli_bridge.conf",
+    vendor: true,
+    src: "aeli_bridge.conf",
+}
