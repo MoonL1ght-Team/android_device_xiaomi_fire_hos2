@@ -386,6 +386,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_effects_fire.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_fire.xml
 
+# Speaker: line out PGA at 0dB instead of -2dB, in the default table and
+# in every regional table the MediaTek parameter parser may pick
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio/audio_param/PlaybackVolAna_AudioParam.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param/PlaybackVolAna_AudioParam.xml \
+    $(foreach r,ato default global in,$(LOCAL_PATH)/configs/audio/audio_param/PlaybackVolAna_$(r).xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param_cust/audio_param_$(r)/PlaybackVolAna_AudioParam.xml)
+
 # Dolby Atmos (crDroid hardware/dolby), only when the repo is synced
 ifneq ($(wildcard hardware/dolby/dolby.mk),)
 $(call inherit-product, hardware/dolby/dolby.mk)
