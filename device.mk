@@ -378,8 +378,10 @@ PRODUCT_PACKAGES += android.hardware.audio.effect.service-aidl.example
 # Legacy effect libraries (Dolby) inside the AIDL effect HAL
 PRODUCT_PACKAGES += libaelibridge
 
-# ViPER4Android RE (AIDL driver)
-PRODUCT_PACKAGES += libv4a_aidl
+# ViPER4Android RE (AIDL driver and app)
+PRODUCT_PACKAGES += \
+    libv4a_aidl \
+    ViPER4Android
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_effects_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_config.xml
 

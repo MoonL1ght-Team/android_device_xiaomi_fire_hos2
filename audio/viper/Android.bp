@@ -22,3 +22,26 @@ cc_prebuilt_library_shared {
         },
     },
 }
+
+// ViPER4Android app (v2.1.1, prebuilt release from
+// likelikeslike/ViPER4Android, GPL-3.0). Installed as a privileged app so
+// it gets MODIFY_AUDIO_ROUTING and can use per-app mode without root; it
+// keeps the upstream signature, so GitHub releases install as updates.
+android_app_import {
+    name: "ViPER4Android",
+    apk: "ViPER4Android.apk",
+    presigned: true,
+    privileged: true,
+    system_ext_specific: true,
+    dex_preopt: {
+        enabled: false,
+    },
+    required: ["privapp-permissions-viper4android.xml"],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-viper4android.xml",
+    system_ext_specific: true,
+    sub_dir: "permissions",
+    src: "privapp-permissions-viper4android.xml",
+}
