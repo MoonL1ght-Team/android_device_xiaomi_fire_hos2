@@ -32,13 +32,13 @@
 	<ParamUnitPool>
 		<ParamUnit param_id="0">
 			<Param name="headset_pga" value="-1"/><!-- -1 means not available -->
-			<Param name="speaker_pga" value="6"/>
+			<Param name="speaker_pga" value="8"/>
 			<Param name="receiver_pga" value="-1"/>
 			<Param name="amp" value="0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0"/>
 		</ParamUnit>
 		<ParamUnit param_id="1">
 			<Param name="headset_pga" value="12"/>
-			<Param name="speaker_pga" value="6"/>
+			<Param name="speaker_pga" value="8"/>
 			<Param name="receiver_pga" value="-1"/>
 			<Param name="amp" value="0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0"/>
 		</ParamUnit>
