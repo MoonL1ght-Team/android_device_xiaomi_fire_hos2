@@ -1,0 +1,6 @@
+# ViPER4Android: the effect driver publishes viper.control from the
+# audio effect HAL, the app talks to it directly.
+type viper_control_service, app_api_service, service_manager_type;
+
+add_service(hal_audio_default, viper_control_service)
+binder_call(untrusted_app, hal_audio_default)

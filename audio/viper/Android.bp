@@ -1,0 +1,24 @@
+//
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// ViPER4Android RE AIDL effect driver (prebuilt, v2.1.1), from
+// https://github.com/likelikeslike/ViPERFX_RE (GPL-3.0). Controlled by
+// the ViPER4Android app through the "viper.control" binder service it
+// registers inside the effect HAL.
+cc_prebuilt_library_shared {
+    name: "libv4a_aidl",
+    vendor: true,
+    relative_install_path: "soundfx",
+    compile_multilib: "64",
+    check_elf_files: false,
+    strip: {
+        none: true,
+    },
+    arch: {
+        arm64: {
+            srcs: ["libv4a_aidl.so"],
+        },
+    },
+}
