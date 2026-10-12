@@ -6,3 +6,4 @@ add_service(hal_audio_default, viper_control_service)
 binder_call(untrusted_app, hal_audio_default)
 # Bundled as a privileged app
 binder_call(priv_app, hal_audio_default)
+allow priv_app servicemanager:service_manager list;
