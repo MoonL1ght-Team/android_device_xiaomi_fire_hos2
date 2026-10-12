@@ -157,3 +157,6 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nqnfc-service\.nxp  u:object_r:hal_nfc_default_exec:s0
 
 /vendor/bin/hw/android\.hardware\.thermal-service\.fire    u:object_r:hal_thermal_default_exec:s0
+
+# Audio effect factory
+/(vendor|system/vendor)/bin/hw/android\.hardware\.audio\.effect\.service-aidl\.fire u:object_r:hal_audio_default_exec:s0

@@ -1,0 +1,17 @@
+//
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// EffectFactory.cpp is copied unchanged from
+// hardware/interfaces/audio/aidl/default (not exported as a filegroup).
+cc_binary {
+    name: "android.hardware.audio.effect.service-aidl.fire",
+    relative_install_path: "hw",
+    defaults: ["aidlaudioeffectservice_defaults"],
+    shared_libs: ["libeffectconfig"],
+    srcs: [
+        "EffectFactory.cpp",
+        "service.cpp",
+    ],
+}

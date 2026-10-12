@@ -374,6 +374,7 @@ $(call inherit-product, vendor/xiaomi/fire/fire-vendor.mk)
 
 
 PRODUCT_PACKAGES += android.hardware.audio.effect.service-aidl.example
+PRODUCT_PACKAGES += android.hardware.audio.effect.service-aidl.fire
 
 # Legacy effect libraries (Dolby) inside the AIDL effect HAL
 PRODUCT_PACKAGES += libaelibridge
@@ -383,7 +384,7 @@ PRODUCT_PACKAGES += \
     libv4a_aidl \
     ViPER4Android
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/audio_effects_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_config.xml
+    $(LOCAL_PATH)/configs/audio/audio_effects_fire.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_fire.xml
 
 # Dolby Atmos (crDroid hardware/dolby), only when the repo is synced
 ifneq ($(wildcard hardware/dolby/dolby.mk),)

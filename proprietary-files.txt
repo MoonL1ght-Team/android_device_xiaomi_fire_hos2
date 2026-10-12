@@ -121,8 +121,7 @@ vendor/lib64/vendor.mediatek.hardware.audio-V1-ndk.so|b12407187926a0b4b531167168
 vendor/etc/a2dp_audio_policy_configuration.xml|11ce5825a0eac50af31e1360430e5a9408e176f8
 vendor/etc/a2dp_in_audio_policy_configuration.xml|6e33ef9bb53e30ccf87f7defa4d34cffa3c61d8c
 vendor/etc/audio_effects.xml|63fae25b8129c7cbb30a5a1af92dc28ab2569f8e
-# vendor/etc/audio_effects_config.xml: shipped from configs/audio (Dolby via libaelibridge)
-#vendor/etc/audio_effects_config.xml|b94d2558928d8e145f37f5a360f30b7f7b2a516f
+vendor/etc/audio_effects_config.xml|b94d2558928d8e145f37f5a360f30b7f7b2a516f
 vendor/etc/audio_policy_configuration.xml|7dac2fc85f5d6ea456671264cd78cb481e0258c4
 vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml|274b08e3e03cfe9529c360a37ee7cba71cf89ccd
 vendor/etc/audio_policy_volumes.xml|9779f9272b65321b0b542aed1a6fffe6f297a34d

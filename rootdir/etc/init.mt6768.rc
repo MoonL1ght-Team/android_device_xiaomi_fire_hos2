@@ -982,8 +982,8 @@ on property:vendor.charge.mishow.ctl=false
 on property:persist.vendor.battery.mishow=true
     setprop vendor.charge.mishow.ctl true
 
-# Fallback AIDL effect factory for HOS2 audio blobs.
-service vendor.audio-effect-hal-aidl /vendor/bin/hw/android.hardware.audio.effect.service-aidl.example
+# AIDL effect factory, reads audio_effects_fire.xml (Dolby, ViPER).
+service vendor.audio-effect-hal-aidl /vendor/bin/hw/android.hardware.audio.effect.service-aidl.fire
     class hal
     user audioserver
     group audio media
